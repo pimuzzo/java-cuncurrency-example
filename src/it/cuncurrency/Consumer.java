@@ -31,36 +31,36 @@ public class Consumer implements Runnable {
         // TODO Maybe could be used a notifyAll to end all threads
         while (true) {
 
-        	// If there aren't elements to process then wait
-        	if ((imgSrc = queue.poll()) == null) {
-        		try {
-    				Thread.sleep(500);
-    				continue;
-    			} catch (InterruptedException e) {
-    				logger.error(e.toString());
-    			}
-        	}
+            // If there aren't elements to process then wait
+            if ((imgSrc = queue.poll()) == null) {
+                try {
+                    Thread.sleep(500);
+                    continue;
+                } catch (InterruptedException e) {
+                    logger.error(e.toString());
+                }
+            }
 
-        	// There is one element to process
-			logger.info("Removed: " + imgSrc);
+            // There is one element to process
+            logger.info("Removed: " + imgSrc);
 
-			Image image = null;
+            Image image = null;
 
-			URL url;
-			try {
-				url = new URL(imgSrc);
-				image = ImageIO.read(url);
+            URL url;
+            try {
+                url = new URL(imgSrc);
+                image = ImageIO.read(url);
 
-				// From url take filename and then extension
-				String filename = imgSrc.substring(imgSrc.lastIndexOf("/") + 1);
-				String extension = filename
-						.substring(filename.indexOf(".") + 1);
+                // From url take filename and then extension
+                String filename = imgSrc.substring(imgSrc.lastIndexOf("/") + 1);
+                String extension = filename
+                        .substring(filename.indexOf(".") + 1);
 
-				File outputfile = new File(filename);
-				ImageIO.write((RenderedImage) image, extension, outputfile);
-			} catch (IOException e) {
-				logger.error(e.toString());
-			}
+                File outputfile = new File(filename);
+                ImageIO.write((RenderedImage) image, extension, outputfile);
+            } catch (IOException e) {
+                logger.error(e.toString());
+            }
 
         }
     }
