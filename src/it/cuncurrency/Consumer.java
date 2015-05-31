@@ -53,8 +53,7 @@ public class Consumer implements Runnable {
 
                 // From url take filename and then extension
                 String filename = imgSrc.substring(imgSrc.lastIndexOf("/") + 1);
-                String extension = filename
-                        .substring(filename.indexOf(".") + 1);
+                String extension = filename.substring(filename.indexOf(".") + 1);
 
                 File outputfile = new File(filename);
                 ImageIO.write((RenderedImage) image, extension, outputfile);
