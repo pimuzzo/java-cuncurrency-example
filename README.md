@@ -1,5 +1,5 @@
-# Java Cuncurrency Example
-Just a Java Cuncurrecy Example with: ConcurrentLinkedQueue.
+# Java Concurrency Example
+Just a Java Concurrecy Example with: ConcurrentLinkedQueue.
 
 I also used: Jsoup, Log4j2 and Maven.
 
